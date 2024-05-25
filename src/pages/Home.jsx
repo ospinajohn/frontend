@@ -7,11 +7,11 @@ import Swal from 'sweetalert2';
 
 const Home = () => {
 	const [show, setShow] = useState(false);
-	const [employees, setEmployees] = useState([]); // Add state variable for employees
+	const [employees, setEmployees] = useState([]); // Agrega el estado para almacenar los empleados
 	const modalRef = useRef();
 
-	const handleShow = () => setShow(true);
-	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true); // Muestra el modal
+	const handleClose = () => setShow(false); // Oculta el modal
 
 	useEffect(() => {
 		fetchEmployees();

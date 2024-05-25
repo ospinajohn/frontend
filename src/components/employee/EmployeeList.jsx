@@ -5,6 +5,12 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const ListEmployees = ({ employees }) => {
+	/**
+	 * Maneja la eliminación de un empleado.
+	 *
+	 * @param {number} id - El ID del empleado a eliminar.
+	 * @returns {Promise<void>} - Una promesa que se resuelve cuando se completa la eliminación del empleado.
+	 */
 	const handleDelete = async id => {
 		Swal.fire({
 			title: 'Desear eliminar el empleado?',
@@ -16,8 +22,7 @@ const ListEmployees = ({ employees }) => {
 			if (result.isConfirmed) {
 				await deleteEmployee(id);
 				Swal.fire('Empleado eliminado', '', 'success');
-			
-        
+				window.location.reload();
 			} else if (result.isDenied) {
 				Swal.fire('Los cambios no se guardan', '', 'info');
 			}
@@ -56,12 +61,6 @@ const ListEmployees = ({ employees }) => {
 									className='btn btn-danger mr-2'>
 									Delete
 								</button>
-
-								<Link
-									to={`/employees/${employee.id}/edit`}
-									className='btn btn-primary mr-2'>
-									Edit
-								</Link>
 
 								<Link to={`/employees/${employee.id}`} className='btn btn-info'>
 									View
